@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function(){
+
+        $("#xoay").hide();
+
+        $("#Send").click(function(){
+            $("#xoay").show();
+            var mk = $("#pw").val();
+            $.post("/taopw", {pw:mk}, function(data){
+                $("#xoay").hide();
+                $("#kq").html(data);
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="xoay" style="width: 100px; height:100px; background-color:black">  </div>
+    <input type="text" id="pw" />
+    <button id="Send">Send</button>
+    <div id="kq">...</div>
+
+</body>
+</html>
